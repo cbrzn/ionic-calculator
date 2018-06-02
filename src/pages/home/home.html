@@ -1,14 +1,46 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Calculator
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+    <h1 class='numbers'> {{value}} </h1>  
+  <div text-center>
+    <div class row> 
+        <button ion-button class='btn' color="dark" (click)="type('delete')">C</button>
+        <button ion-button class='btn' color="dark" (click)="type('invert')">+/-</button>
+        <button ion-button class='btn' color="dark" (click)="type('%')">%</button>
+        <button ion-button class='btn' color="dark" (click)="type('/')">÷</button>
+      </div>
+      <div class row> 
+        <button ion-button class='btn' color="dark" (click)="type(1)">1</button>
+        <button ion-button class='btn' color="dark" (click)="type(2)">2</button>
+        <button ion-button class='btn' color="dark" (click)="type(3)">3</button>
+        <button ion-button class='btn' color="dark" (click)="type('*')">x</button>
+      </div>
+      
+      <div class row> 
+        <button ion-button class='btn' color="dark" (click)="type(4)">4</button>
+        <button ion-button class='btn' color="dark" (click)="type(5)">5</button>
+        <button ion-button class='btn' color="dark" (click)="type(6)">6</button>
+        <button ion-button class='btn' color="dark" (click)="type('-')">-</button>
+      </div>
+          
+      <div class row> 
+        <button ion-button class='btn' color="dark" (click)="type(7)">7</button>
+        <button ion-button class='btn' color="dark" (click)="type(8)">8</button>
+        <button ion-button class='btn' color="dark" (click)="type(9)">9</button>
+        <button ion-button class='btn' color="dark" (click)="type('+')">+</button>
+      </div>
+      
+      
+      <div class row> 
+        <button ion-button class='btn-0' color="dark" (click)="type(0)">0</button>
+        <button ion-button class='btn' color="dark" (click)="type('.')">.</button>
+        <button ion-button class='btn' color="dark" (click)="type('=')">=</button>
+      </div>
+    </div>
+  </ion-content>
