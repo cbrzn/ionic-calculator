@@ -6,56 +6,77 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  value: string = '0'
-  op:number[] = [] 
-  constructor(public navCtrl: NavController) {
-  }
+    value: string = '0'
+    op:string[] = [] 
+    constructor(public navCtrl: NavController) {
+    }
 
 
   type(e) {
     switch (e) {
       case '+': 
-        this.value = '='
+      if (this.op[0] == null && this.value !== '0') {
+        this.op.push(this.value+'+')
+        this.value = ''
+      } else {
+        this.value = '0'
+        this.op.pop()
+      }
       break
       case '-': 
-        (this.op[0] == null ? this.value = '0' : this.op.push('-'))
+      if (this.op[0] == null && this.value !== '0') {
+        this.op.push(this.value+'-')
+        this.value = ''
+      } else {
+        this.value = '0'
+        this.op.pop()
+      }
       break
       case '*': 
-        this.value = ' '
-        console.log(this.op)
-        break
-      case '/': 
-        this.value = ' '
-        console.log(this.op)
-        break
+      if (this.op[0] == null && this.value !== '0') {
+        this.op.push(this.value+'*')
+        this.value = ''
+      } else {
+        this.value = '0'
+        this.op.pop()
+      }
+      break
+      case '/':
+        if (this.op[0] == null && this.value !== '0') {
+          this.op.push(this.value+'/')
+          this.value = ''
+        } else {
+          this.value = '0'
+          this.op.pop()
+        }
+      break
       case '%': 
-        this.op.push(this.value)
-        console.log(this.op)
+        this.value = eval(this.value+'/100')
       break
       case 'delete': 
-        this.value = ' '
+        this.value = '0'
+        this.op.pop()
       break
       case 'invert': 
-        this.op.push(this.value)
-        console.log(this.op)
+        this.value = eval(this.value+'*-1')      
       break
       case '.': 
-        this.op.push(this.value)
-        console.log(this.op)
-      break
+        if (this.value.includes('.')) {
+          this.value = this.value
+        } else if (this.value = '0') {
+          this.value = '0.'
+        } else {
+          this.value = this.value + '.'
+        }
+
+        break
       case '=': 
-        this.value = String(this.op[0]  +this.value)
-        console.log('HERE')
-        console.log(this.op)
+        this.value = eval(this.op.toString()+this.value)
+        this.op.pop()
       break
       default:
         (this.value == '0' ? this.value = ""+e : this.value += e)
       break
     }
-  }
-
-  two() {
-    console.log(this.value)
-    console.log(this.value == '')
   }
 }
