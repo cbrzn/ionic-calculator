@@ -2,23 +2,47 @@ page-home {
 
 }
 
+.background {
+    background-color: black;
+    width: 300px;
+}
+
 .btn {
     height: 50px;
     width: 50px;
     border-radius: 50%;
     border: 1px ;
-  }
+    background-color: gray
+}
+
+.btn-op {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px ;
+    background-color: orangered
+}
+
+.btn-op-first {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px ;
+    background-color: silver
+}
 
 .btn-0 {
     height: 50px;
     width: 100px;
     border-radius: 20%;
     border: 2px ;
+    color: gray
 }
 
 .numbers {
     font-size: 2.5em;
     text-align: center;
+    color: white
 }
 
 .calc {

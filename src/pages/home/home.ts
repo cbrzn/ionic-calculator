@@ -45,8 +45,6 @@ export class HomePage {
         if (this.op[0] == null && this.value !== '0') {
           this.op.push(this.value+'/')
           this.value = ' '
-        } else if (this.op){ 
-          
         } else {
           this.value = '0'
           this.op.pop()
@@ -63,14 +61,26 @@ export class HomePage {
         this.value = eval(this.value+'*-1')      
       break
       case '.': 
-         (this.value.includes('.') ? this.value : this.value += '.')   
+        if (this.value.includes('.')) {
+          this.value
+        } else if (this.value == ' ') {
+          this.value = '0.'
+        } else if (this.value == '0') {
+          this.value = '0.'
+        } else {
+          this.value += '.'
+        }
+        //  (this.value.includes('.') ? this.value :this.value += '.' ? this.value = ' ' : this.value = '0.')   
       break
       case '=': 
           if (this.op[0] == undefined) {
             this.value 
-          }
-          else if (this.op[0].includes('/') && this.value == '0') {
+          } else if (this.op[0].includes('/') && this.value == '0') {
             this.value = 'Error'  
+          } else if (this.op[0] != undefined && this.value == ' ' ) {
+            this.op[0] = this.op[0].substring(0, this.op[0].length - 1)
+            this.value = this.op[0] 
+            this.op.pop()
           } else {
             this.value = eval(this.op.toString()+this.value)
             this.op.pop()
