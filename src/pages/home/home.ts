@@ -73,18 +73,19 @@ export class HomePage {
         //  (this.value.includes('.') ? this.value :this.value += '.' ? this.value = ' ' : this.value = '0.')   
       break
       case '=': 
-          if (this.op[0] == undefined) {
-            this.value 
-          } else if (this.op[0].includes('/') && this.value == '0') {
-            this.value = 'Error'  
-          } else if (this.op[0] != undefined && this.value == ' ' ) {
-            this.op[0] = this.op[0].substring(0, this.op[0].length - 1)
-            this.value = this.op[0] 
-            this.op.pop()
-          } else {
-            this.value = eval(this.op.toString()+this.value)
-            this.op.pop()
-          }
+        if (this.op[0] == undefined) {
+          this.value 
+        } else if (this.op[0].includes('/') && this.value == '0') {
+          this.value = 'Error'  
+        } else if (this.op[0] != undefined && this.value == ' ' ) {
+          this.op[0] = this.op[0].substring(0, this.op[0].length - 1)
+          this.value = this.op[0] 
+          this.op.pop()
+        } else {
+          var num = eval(this.op.toString()+this.value)
+          this.value = num.toString()
+          this.op.pop()
+        }
       break
       default:
         (this.value == '0' ? this.value = ""+e : this.op[0] == null ? this.value +=""+e : this.value += e)
