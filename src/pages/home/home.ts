@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -51,14 +52,16 @@ export class HomePage {
         }
       break
       case '%': 
-        this.value = eval(this.value+'/100')
+        var numb = eval(this.value+'/100')
+        this.value = numb.toString()  
       break
       case 'delete': 
         this.value = '0'
         this.op.pop()
       break
       case 'invert': 
-        this.value = eval(this.value+'*-1')      
+        var numbe = eval(this.value+'*-1')      
+        this.value = numbe.toString()
       break
       case '.': 
         if (this.value.includes('.')) {
@@ -88,7 +91,15 @@ export class HomePage {
         }
       break
       default:
-        (this.value == '0' ? this.value = ""+e : this.op[0] == null ? this.value +=""+e : this.value += e)
+        if (this.value == '0') {
+          this.value = ""+e
+        } else if (this.op[0] == null) {
+          this.value +=""+e
+        } else if (this.op[0] != null && e == 0) {
+          this.value = "0."
+        } else {
+          this.value += e
+        } 
       break
     }
   }
